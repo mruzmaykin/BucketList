@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "395446126031",
+    "firebase_url": "https://bucketlist-e3df2.firebaseio.com",
+    "project_id": "bucketlist-e3df2",
+    "storage_bucket": "bucketlist-e3df2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395446126031:android:6eeb145bfa97d11a",
+        "android_client_info": {
+          "package_name": "com.example.bucketlist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395446126031-va8bjhi794pcsp8824m1c59t7kfj896g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAko7aVT2YNAsp21LnlcCwAnj83AtG5Bh4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
