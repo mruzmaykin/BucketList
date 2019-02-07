@@ -28,31 +28,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
-Widget _itemList(int id) {
-  return FlatButton(
-    child: _createBody(id),
-  );
-}
 
-Widget _createBody(int id) {
-  return StreamBuilder(
-      stream: Firestore.instance
-          .collection('places')
-          .document(id.toString())
-          .snapshots(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          var doc = snapshot.data;
-          if (doc.exists) {
-            return Text(
-              doc['content'],
-              style: TextStyle(color: Colors.white),
-            );
-          }
-        }
-        return Center(child: CircularProgressIndicator());
-      });
-}
+
+
 
 class SecondPage extends StatelessWidget {
   @override

@@ -2,20 +2,21 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class MyGridView {
-  Card getStructuredGridCell(id, image) {
+  Card getStructuredGridCell(id) {
     return new Card(
-        elevation: 1.5,
-        child: new Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.min,
-          verticalDirection: VerticalDirection.down,
-          children: <Widget>[
-            new Image(image: AssetImage('assets/pics/santamonica.jpg')),
-            new FlatButton(
+      elevation: 1.5,
+      child: new Container(
+        decoration: ShapeDecoration(
+            shape: RoundedRectangleBorder(),
+            image: DecorationImage(
+              image: AssetImage('assets/pics/' + id.toString()+".jpg"),
+              fit: BoxFit.fill,
+            )),
+            child: FlatButton(
               child: _createBody(id),
-            )
-          ],
-        ));
+            ),
+      ),
+    );
   }
 
   GridView build() {
@@ -24,20 +25,7 @@ class MyGridView {
       gridDelegate:
           new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemBuilder: (BuildContext context, int index) {
-        return new Card(
-            shape: CircleBorder(),
-            child: new Container(
-              decoration: ShapeDecoration(
-                  shape: CircleBorder(),
-                  image: DecorationImage(
-                    image: AssetImage('assets/pics/santamonica.jpg'),
-                    fit: BoxFit.fill,
-                  )),
-              child: new FlatButton(
-                child: _createBody(index),
-                //child: new Text('Santa Monica'), //just for testing, will fill with image later
-              ),
-            ));
+        return getStructuredGridCell(index);
       },
     );
   }
