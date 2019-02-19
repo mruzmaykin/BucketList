@@ -10,56 +10,31 @@ class MyApp extends StatelessWidget {
   final MyGridView myGridView = new MyGridView();
   @override
   Widget build(BuildContext context) {
-    final title = 'LA Bucket List';
-
+    final title = '\u00b7PLACES\u00b7';
+    //00b7 - middle dot
     return MaterialApp(
       title: title,
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-          centerTitle: true,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(40.0),
+          child: AppBar(
+            backgroundColor: Colors.black87,
+            title: Text(
+              title,
+              style: TextStyle(
+                color: Colors.yellow[600],
+                fontFamily: 'Raleway Bold',
+                fontSize: 20,
+              ),
+            ),
+            centerTitle: true,
+          ),
         ),
-        body: myGridView.build(),
+        body: myGridView.build(context),
 
         //backgroundColor: Colors.teal,
       ),
-    );
-  }
-}
-
-
-
-
-
-class SecondPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Second screen'),
-      ),
-      body: new Center(
-          child: new Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              new RaisedButton.icon(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: new Icon(
-                  Icons.arrow_back,
-                  color: Colors.teal,
-                ),
-                label: Text('Back'),
-              ),
-            ],
-          )
-        ],
-      )),
     );
   }
 }
