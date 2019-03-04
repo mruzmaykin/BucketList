@@ -1,12 +1,30 @@
-import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'gridview.dart';
+import 'dart:io';
 
-void main() {
-  runApp(MyApp());
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'gridview.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+
+void main() async{
+  final FirebaseApp app = await FirebaseApp.configure(
+    name: 'buckelist',
+    options: FirebaseOptions(
+      googleAppID: Platform.isIOS
+          ? '1:395446126031:ios:77bc6f793e32d551'
+          : '1:395446126031:android:6eeb145bfa97d11a',
+      gcmSenderID: '395446126031',
+      apiKey: 'AIzaSyA3YW1gzFqTv_xJPYb6vOJLVA4YguOVyFE',
+      projectID: 'bucketlist-e3df2',
+    ),
+  );
+  final FirebaseStorage storage = FirebaseStorage(
+      app: app, storageBucket: 'gs://bucketlist-e3df2.appspot.com');
+  runApp(MyApp(storage:storage));
 }
 
 class MyApp extends StatelessWidget {
+  MyApp({this.storage});
+  final FirebaseStorage storage;
   final MyGridView myGridView = new MyGridView();
   @override
   Widget build(BuildContext context) {

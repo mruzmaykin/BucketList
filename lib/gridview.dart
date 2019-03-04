@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
-import 'main.dart';
+import 'package:firebase_storage_image/firebase_storage_image.dart';
 
 class MyGridView {
+  final String storageBucket = 'gs://bucketlist-e3df2.appspot.com/';
   Card getStructuredGridCell(context, id) {
     return new Card(
       elevation: 1.5,
@@ -18,8 +18,9 @@ class MyGridView {
               decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(),
                   image: DecorationImage(
-                    image: AssetImage('assets/pics/' + (id+1).toString()+".jpg"),
-                    //image: AssetImage('assets/pics/1.jpg'),
+                    //image: AssetImage('assets/pics/' + (id+1).toString()+".jpg"),
+                    image: FirebaseStorageImage(
+                      storageBucket + (id+1).toString()+".jpg"),
                     fit: BoxFit.fill,
                   )),
                   child: FlatButton(
