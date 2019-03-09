@@ -85,7 +85,7 @@ class SecondPage extends StatelessWidget {
           //   mainAxisAlignment: MainAxisAlignment.start,
           //   children: <Widget>[
           Expanded(
-            flex: 57,
+            flex: 40,
             child: CarouselSlider(
               height: 400.0,
               items: [1, 2, 3, 4, 5].map((i) {
@@ -113,14 +113,14 @@ class SecondPage extends StatelessWidget {
           Expanded(
             flex: 13,
             child: new Container(
-              //padding: const EdgeInsets.all(16.0),
+              //padding: const EdgeInsets.all(5.0),
               width: c_width,
               child: _getAddress(id),
             ),
           ),
 
           Expanded(
-            flex: 30,
+            flex: 40,
             child: new Container(
               //padding: const EdgeInsets.all(16.0),
               width: c_width,
@@ -161,7 +161,7 @@ Widget _createBody(int id) {
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: 'Raleway',
-                  fontSize: 12,
+                  fontSize: 20,
                 ));
           }
         }
@@ -180,12 +180,12 @@ Widget _getAddress(int id) {
         if (snapshot.hasData) {
           var doc = snapshot.data;
           if (doc.exists) {
-            return Text(text = "Address: " + doc['address'],
+            return Text(text = doc['address'],
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   color: Colors.black,
-                  fontFamily: 'Raleway',
-                  fontSize: 11,
+                  fontFamily: 'Raleway Bold',
+                  fontSize: 20,
                 ));
           }
         }
@@ -209,7 +209,7 @@ Widget _getDescription(int id) {
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: 'Raleway',
-                  fontSize: 9,
+                  fontSize: 15,
                 ));
           }
         }
@@ -233,7 +233,7 @@ Widget _getTitle(int id) {
                 style: TextStyle(
                   color: Colors.yellow[600],
                   fontFamily: 'Raleway Bold',
-                  fontSize: 16,
+                  fontSize: 25,
                 ));
           }
         }

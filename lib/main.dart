@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
               style: TextStyle(
                 color: Colors.yellow[600],
                 fontFamily: 'Raleway Bold',
-                fontSize: 20,
+                fontSize: 25,
               ),
             ),
             centerTitle: true,
