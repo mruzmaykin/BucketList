@@ -1,11 +1,14 @@
+import 'dart:async';
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'gridview.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
-void main() async{
+Future <void> main() async{
   final FirebaseApp app = await FirebaseApp.configure(
     name: 'buckelist',
     options: FirebaseOptions(
@@ -17,13 +20,16 @@ void main() async{
       projectID: 'bucketlist-e3df2',
     ),
   );
+  final Firestore firestore = Firestore(app:app);
+ 
   final FirebaseStorage storage = FirebaseStorage(
       app: app, storageBucket: 'gs://bucketlist-e3df2.appspot.com');
-  runApp(MyApp(storage:storage));
+  runApp(MyApp(firestore:firestore, storage:storage));
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({this.storage});
+  MyApp({this.firestore, this.storage});
+  final Firestore firestore;
   final FirebaseStorage storage;
   final MyGridView myGridView = new MyGridView();
   @override
