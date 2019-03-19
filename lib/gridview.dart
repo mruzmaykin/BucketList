@@ -78,69 +78,62 @@ class SecondPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: new Center(
-          child: new Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+          child: SingleChildScrollView(
+                      child: new Stack(
         children: <Widget>[
-          // new Row(
-          //   mainAxisAlignment: MainAxisAlignment.start,
-          //   children: <Widget>[
-          Expanded(
-            flex: 40,
-            child: CarouselSlider(
-              height: 400.0,
-              items: [1, 2, 3, 4, 5].map((i) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
+            // new Row(
+            //   mainAxisAlignment: MainAxisAlignment.start,
+            //   children: <Widget>[
+            CarouselSlider(
+                height: 400.0,
+                items: [1, 2, 3, 4, 5].map((i) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Container(
                         width: MediaQuery.of(context).size.width,
                         margin: EdgeInsets.symmetric(horizontal: 5.0),
                         decoration: ShapeDecoration(
                           shape: RoundedRectangleBorder(),
-                          image:DecorationImage( 
-                        image: FirebaseStorageImage(
-                        storageBucket + (id + 1).toString() + ".jpg"),
-                  fit: BoxFit.fill,
-                  ),
-                        // child: Text(
-                        //   'text $i',
-                        //   style: TextStyle(fontSize: 16.0),
-                        // ));
-                    ),);},
-                );
-              }).toList(),
-            ),
-          ),
-          Expanded(
-            flex: 13,
-            child: new Container(
-              //padding: const EdgeInsets.all(5.0),
-              width: c_width,
-              child: _getAddress(id),
-            ),
-          ),
-
-          Expanded(
-            flex: 40,
-            child: new Container(
-              //padding: const EdgeInsets.all(16.0),
-              width: c_width,
-              child: _getDescription(id),
-            ),
-          )
-          // new RaisedButton.icon(
-          //   onPressed: () {
-          //     Navigator.pop(context);
-          //   },
-          //   icon: new Icon(
-          //     Icons.arrow_back,
-          //     color: Colors.teal,
-          //   ),
-          //   label: Text('Back'),
-          // ),
-          //   ],
-          // )
+                          image: DecorationImage(
+                            image: FirebaseStorageImage(
+                                storageBucket  + (id + 1).toString() +"/" + i.toString()+ ".jpg"),
+                            fit: BoxFit.cover,
+                          ),
+                          // child: Text(
+                          //   'text $i',
+                          //   style: TextStyle(fontSize: 16.0),
+                          // ));
+                        ),
+                      );
+                    },
+                  );
+                }).toList(),
+              ),
+              new Container(
+                //padding: const EdgeInsets.all(16.0),
+                width: c_width,
+                child: _getAddress(id),
+              ),
+              new Container(
+                //padding: const EdgeInsets.all(16.0),
+                width: c_width,
+                child: _getDescription(id),
+              ),
+            // new RaisedButton.icon(
+            //   onPressed: () {
+            //     Navigator.pop(context);
+            //   },
+            //   icon: new Icon(
+            //     Icons.arrow_back,
+            //     color: Colors.teal,
+            //   ),
+            //   label: Text('Back'),
+            // ),
+            //   ],
+            // )
         ],
-      )),
+      ),
+          )),
     );
   }
 }
@@ -156,12 +149,12 @@ Widget _createBody(int id) {
         if (snapshot.hasData) {
           var doc = snapshot.data;
           if (doc.exists) {
-            return Text(text = doc['content'],
+            return Text(text = (id+1).toString() + ". " + doc['content'],
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: 'Raleway',
-                  fontSize: 20,
+                  fontSize: 11,
                 ));
           }
         }
@@ -180,12 +173,12 @@ Widget _getAddress(int id) {
         if (snapshot.hasData) {
           var doc = snapshot.data;
           if (doc.exists) {
-            return Text(text = doc['address'],
+            return Text(text = "Address: " + doc['address'],
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   color: Colors.black,
-                  fontFamily: 'Raleway Bold',
-                  fontSize: 20,
+                  fontFamily: 'Raleway',
+                  fontSize: 11,
                 ));
           }
         }
@@ -209,7 +202,7 @@ Widget _getDescription(int id) {
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: 'Raleway',
-                  fontSize: 15,
+                  fontSize: 9,
                 ));
           }
         }
@@ -233,7 +226,7 @@ Widget _getTitle(int id) {
                 style: TextStyle(
                   color: Colors.yellow[600],
                   fontFamily: 'Raleway Bold',
-                  fontSize: 25,
+                  fontSize: 16,
                 ));
           }
         }
